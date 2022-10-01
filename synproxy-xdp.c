@@ -94,6 +94,8 @@ static __always_inline __u16 csum_tcpudp_magic(__be32 saddr, __be32 daddr,
 	s += (__u32)daddr;
 #if defined(__BIG_ENDIAN__)
 	s += proto + len;
+#elif defined(__LITTLE_ENDIAN__)
+	s += (proto + len) << 8;
 #else
 #error Unknown endian
 #endif
