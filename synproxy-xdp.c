@@ -42,7 +42,6 @@ struct bpf_map_def SEC("maps") allowed_ports = {
 #define IP_OFFSET 0x1fff
 
 #define NEXTHDR_TCP 6
-
 #define TCPOPT_NOP 1
 #define TCPOPT_EOL 0
 #define TCPOPT_MSS 2
