@@ -13,7 +13,7 @@
 #include <linux/minmax.h>
 #include <vdso/time64.h>
 #include <asm/unaligned.h>
-#include <bpf/bpf.h>
+#include <linux/bpf.h>
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_endian.h>
 
