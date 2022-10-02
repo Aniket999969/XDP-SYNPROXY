@@ -693,10 +693,3 @@ sizeof(tup.ipv6.daddr));
 	return hdr.tcp->syn ? syncookie_handle_syn(&hdr, ctx, data, data_end) :
 			      syncookie_handle_ack(&hdr);
 }
-
-SEC("xdp/dummy")
-int dummy_xdp(struct xdp_md *ctx)
-{
-	// veth requires XDP programs to be set on both sides.
-	return XDP_PASS;
-}
