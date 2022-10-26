@@ -1,7 +1,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include <uapi/linux/errno.h>
+#include <uapi/asm-generic/errno.h>
 #include <uapi/linux/bpf.h>
 #include <uapi/linux/pkt_cls.h>
 #include <uapi/linux/if_ether.h>
