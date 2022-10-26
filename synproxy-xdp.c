@@ -12,8 +12,7 @@
 #include <linux/netfilter/nf_conntrack_common.h>
 #include <linux/minmax.h>
 #include <vdso/time64.h>
-#include <asm/unaligned.h>
-#include <linux/bpf.h>
+#include <linux/unaligned.h>
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_endian.h>
 
@@ -600,8 +599,7 @@ static __always_inline int syncookie_handle_ack(struct header_pointers *hdr)
 }
 
 SEC("xdp/syncookie")
-int syncookie_xdp(struct xdp_md *ctx)
-{
+int syncookie_xdp(struct xdp_md *ctx) {
 	void *data_end = (void *)(long)ctx->data_end;
 	void *data = (void *)(long)ctx->data;
 	struct header_pointers hdr;
@@ -617,9 +615,8 @@ int syncookie_xdp(struct xdp_md *ctx)
 
 	if (hdr.ipv4) {
 		// TCP doesn't normally use fragments, and XDP can't reassemble them.
-		if ((hdr.ipv4->frag_off & bpf_htons(IP_DF | IP_MF | IP_OFFSET)) != 
-bpf_htons(IP_DF))
-			return XDP_DROP;
+		if ((hdr.ipv4->frag_off & bpf_htons(IP_DF | IP_MF | IP_OFFSET)) != bpf_htons(IP_DF))
+		 return XDP_DROP;
 
 		tup.ipv4.saddr = hdr.ipv4->saddr;
 		tup.ipv4.daddr = hdr.ipv4->daddr;
