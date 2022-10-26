@@ -1,18 +1,19 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include <linux/errno.h>
-#include <linux/bpf.h>
-#include <linux/pkt_cls.h>
-#include <linux/if_ether.h>
-#include <linux/in.h>
-#include <linux/ip.h>
-#include <linux/ipv6.h>
-#include <linux/tcp.h>
-#include <linux/netfilter/nf_conntrack_common.h>
+#include <uapi/linux/errno.h>
+#include <uapi/linux/bpf.h>
+#include <uapi/linux/pkt_cls.h>
+#include <uapi/linux/if_ether.h>
+#include <uapi/linux/in.h>
+#include <uapi/linux/ip.h>
+#include <uapi/linux/ipv6.h>
+#include <uapi/linux/tcp.h>
+#include <uapi/linux/netfilter/nf_conntrack_common.h>
 #include <linux/minmax.h>
 #include <vdso/time64.h>
-#include <asm-generic/unaligned.h>
+#include <asm/unaligned.h>
+
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_endian.h>
 
