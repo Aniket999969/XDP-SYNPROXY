@@ -12,7 +12,7 @@
 #include <linux/netfilter/nf_conntrack_common.h>
 #include <linux/minmax.h>
 #include <vdso/time64.h>
-#include <linux/unaligned.h>
+#include <asm-generic/unaligned.h>
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_endian.h>
 
