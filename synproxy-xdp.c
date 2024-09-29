@@ -509,7 +509,7 @@ static __always_inline int syncookie_handle_syn(struct header_pointers *hdr,
 	if (!check_port_allowed(bpf_ntohs(hdr->tcp->dest)))
 		return XDP_DROP;
 
-	value = bpf_tcp_raw_gen_syncookie(ip_header, ip_len,
+	value = bpf_tcp_raw_gen_syncookie_ipv4(ip_header, ip_len,
 					  (void *)hdr->tcp, hdr->tcp_len);
 	if (value < 0)
 		return XDP_ABORTED;
@@ -586,10 +586,7 @@ static __always_inline int syncookie_handle_ack(struct header_pointers *hdr)
 	int err;
 
 	if (hdr->ipv4)
-		err = bpf_tcp_raw_check_syncookie(hdr->ipv4, sizeof(*hdr->ipv4),
-						  (void *)hdr->tcp, hdr->tcp_len);
-	else if (hdr->ipv6)
-		err = bpf_tcp_raw_check_syncookie(hdr->ipv6, sizeof(*hdr->ipv6),
+		err = bpf_tcp_raw_check_syncookie_ipv4(hdr->ipv4, sizeof(*hdr->ipv4),
 						  (void *)hdr->tcp, hdr->tcp_len);
 	else
 		return XDP_ABORTED;
